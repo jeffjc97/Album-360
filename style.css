@@ -1,0 +1,10 @@
+#album-container {
+	background-color: tan;
+	height: 100vh;
+}
+
+#album-img {
+	height: 100vh;
+	display: block;
+	margin: auto;
+}
