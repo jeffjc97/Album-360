@@ -16,17 +16,16 @@ def get_sign_edge(edge, perp):
 	return 1 if edge['y'] - perp['perp_slope'] * edge['x'] > 0 else 0
 
 
-def album_stats(name, dim, eye_x, eye_y, edge_x, edge_y):
+def album_stats(name, artist, album, dim, eye_x, eye_y, edge_x, edge_y):
 	scaled_eye = calc_pixel(dim, eye_x, eye_y)
 	scaled_edge = calc_pixel(dim, edge_x, edge_y)
 	perp = get_perp(scaled_eye, scaled_edge)
-	print "{name: '" + name + "', eye: { x:", scaled_eye['x'], ", y:", scaled_eye['y'], "}, edge: { x:", scaled_edge['x'], ", y:", scaled_edge['y'], ", side:", get_sign_edge(scaled_edge, perp), "}, perp: { slope:", perp['perp_slope'], ", yint:", perp['y_int'], "}}"
+	print "{artist:'" + artist + "', album:'" + album + "', name: '" + name + "', eye: { x:", scaled_eye['x'], ", y:", scaled_eye['y'], "}, edge: { x:", scaled_edge['x'], ", y:", scaled_edge['y'], ", side:", get_sign_edge(scaled_edge, perp), "}, perp: { slope:", perp['perp_slope'], ", yint:", perp['y_int'], "}}"
 
 # album_stats('10day.jpg', 500, 238, 207, 239, 0)
 # album_stats('coloringbook.jpeg', 1024, 593, 665, 744, 1024)
 # album_stats('nwts.jpg', 1500, 420, 788, 0, 790)
 # album_stats('motm2.jpg', 1500, 726, 591, 353, 1500)
-# album_stats('readytodie.jpg', 600, 310, 242, 600, 427)
 # album_stats('mbdtf.jpg', 1200, 488, 509, 1200, 794)
 # album_stats('rodeo.jpg', 1500, 821, 146, 1500, 523)
 # album_stats('blueprint.jpg', 1500, 530, 371, 912, 0)
@@ -34,7 +33,15 @@ def album_stats(name, dim, eye_x, eye_y, edge_x, edge_y):
 # album_stats('barter6.jpg', 1200, 597, 554, 599, 1200)
 # album_stats('graduation.jpg', 1000, 96, 116, 0, 0)
 # album_stats('mykrazylife.jpg', 1000, 496, 312, 1000, 320)
-album_stats('toohightoriot.jpg', 1400, 329, 706, 0, 530)
+# album_stats('toohightoriot.jpg', 1400, 329, 706, 0, 530)
+# album_stats_point('thechronic.jpg', 1000, 542, 482)
+# album_stats('ittakesanation.jpg', 1000, 447, 424, 1000, 269);
+# album_stats('be.jpg', 1400, 672, 457, 1400, 786);
+# album_stats('readytodie.jpg', 600, 314, 231, 600, 405);
+# album_stats('ss3.jpg', 1400, 291, 524, 0, 432);
+# album_stats('lateregistration.jpg', 1000, 431, 548, 0, 566);
+
+
 
 
 

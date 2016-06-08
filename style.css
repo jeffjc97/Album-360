@@ -1,5 +1,5 @@
 #album-container {
-	background-color: tan;
+	background-color: black;
 	height: 100vh;
 }
 
@@ -7,4 +7,24 @@
 	height: 100vh;
 	display: block;
 	margin: auto;
+}
+
+.text {
+	color: white;
+	position: fixed;
+}
+
+#title-container {
+	font-family: 'Rock Salt', cursive;
+	font-size: 25px;
+    bottom: 45px;
+    left: 2%;
+}
+
+#album-info {
+	margin-top: 5%;
+	font-family: 'BenchNine', sans-serif;
+	font-size: 20px;
+    bottom: 15px;
+    left: 2%;
 }
