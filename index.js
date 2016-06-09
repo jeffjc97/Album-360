@@ -43,31 +43,38 @@ function init() {
 	});
 
 	$("#album-img").mousemove(function(event) {
-		offset = $("#album-img").offset();
-		pointer = calcPixel(event.pageX - offset.left, event.pageY - offset.top);
-		curclosest = $("#album-img").attr("src").substr(4, ($("#album-img").attr("src").length - 8));
-		closest = {dist: 2, img: 'straightouttacompton.jpg'};
-		if (Math.abs(pointer.x) < 0.2 && Math.abs(pointer.y) < 0.2) {
-			closest = {name: "straightouttacompton", text: "N.W.A - Straight Outta Compton"};
-		}
-		else {
-			albums.forEach(function(i) {
-				distance = distToSegment(pointer, i.eye, i.edge);
-				if (isOnSameSide(pointer, i) && distance < closest.dist) {
-					closest = {dist: distance, name: i.name, text: i.artist + " - " + i.album};
-				}
-			});
-		}
-		if (closest.name != curclosest) {
-			$("#album-img").attr("src", "img/" + closest.name + ".jpg");
-			$("#album-text").text(closest.text);
-			if (!mute) {
-				$("#album-snippet")[0].pause();
-				$("#album-snippet").attr("src", "music/" + closest.name + ".m4a");
-				$("#album-snippet")[0].play().catch(errorHandler);
-			}
-		}
+		updateImg();
 	});
+	$("#album-img").click(function(event) {
+		updateImg();
+	});
+}
+
+function updateImg() {
+	offset = $("#album-img").offset();
+	pointer = calcPixel(event.pageX - offset.left, event.pageY - offset.top);
+	curclosest = $("#album-img").attr("src").substr(4, ($("#album-img").attr("src").length - 8));
+	closest = {dist: 2, img: 'straightouttacompton.jpg'};
+	if (Math.abs(pointer.x) < 0.2 && Math.abs(pointer.y) < 0.2) {
+		closest = {name: "straightouttacompton", text: "N.W.A - Straight Outta Compton"};
+	}
+	else {
+		albums.forEach(function(i) {
+			distance = distToSegment(pointer, i.eye, i.edge);
+			if (isOnSameSide(pointer, i) && distance < closest.dist) {
+				closest = {dist: distance, name: i.name, text: i.artist + " - " + i.album};
+			}
+		});
+	}
+	if (closest.name != curclosest) {
+		$("#album-img").attr("src", "img/" + closest.name + ".jpg");
+		$("#album-text").text(closest.text);
+		if (!mute) {
+			$("#album-snippet")[0].pause();
+			$("#album-snippet").attr("src", "music/" + closest.name + ".m4a");
+			$("#album-snippet")[0].play().catch(errorHandler);
+		}
+	}
 }
 
 // this seems really bad but the error isn't affecting anything
