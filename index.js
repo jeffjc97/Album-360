@@ -21,6 +21,14 @@ var albums = [
 var mute = false;
 
 $(document).ready(function() {
+	$('.close').click(function() {
+		console.log("??")
+		init();
+	});
+	$('#infoModal').modal('show');
+});
+
+function init() {
 	$("#album-snippet")[0].play().catch(errorHandler);
 
 	$(".play-music").click(function() {
@@ -61,7 +69,7 @@ $(document).ready(function() {
 			}
 		}
 	});
-});
+}
 
 // this seems really bad but the error isn't affecting anything
 function errorHandler(error) {

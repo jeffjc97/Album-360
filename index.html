@@ -3,16 +3,31 @@
 <html>
 	<head>
 		<title>Album 360</title>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="index.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="https://use.fontawesome.com/f34b8ea8fd.js"></script>
-		<script type="text/javascript" src="jquery.min.js"></script>
-		<script type="text/javascript" src="index.js"></script>
 	</head>
 	<body>
+		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<h4 class="modal-title" id="myModalLabel">Welcome to Album 360</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	Move your mouse around the screen and watch your favorite hip-hop artists follow you around. To toggle the music, click on the <i class="fa fa-music"></i> icon at the bottom-left corner of the screen.
+			        	<br><br>
+			        	<div class="credit">Site by <a href="http://jeffreyjchang.com/">Jeff Chang</a></div>
+			      	</div>
+		    	</div>
+		  	</div>
+		</div>
 		<div id="album-container">
 			<img id="album-img" src="img/acidrap.jpg">
 			<audio id="album-snippet">
