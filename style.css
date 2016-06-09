@@ -28,3 +28,16 @@
     bottom: 15px;
     left: 2%;
 }
+
+#sound {
+	float: left;
+	margin-right: 5px;
+}
+
+#album-text {
+	float: left;
+}
+
+.play-music:hover {
+	cursor: pointer;
+}

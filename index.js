@@ -18,14 +18,30 @@ var albums = [
 	{artist: 'Kanye West', album: 'Late Registration', name: 'lateregistration', eye: { x: -0.138 , y: -0.096 }, edge: { x: -1.0 , y: -0.132 , side: 0 }, perp: { slope: -23.9444444444 , yint: -3.40033333333 }}
 ];
 
+var mute = false;
+
 $(document).ready(function() {
+	$("#album-snippet")[0].play().catch(errorHandler);
+
+	$(".play-music").click(function() {
+		if (mute) {
+			mute = false;
+			$(this).css("color", "white");
+		}
+		else {
+			mute = true;
+			$(this).css("color", "red");
+			$("#album-snippet")[0].pause();
+		}
+	});
+
 	$("#album-img").mousemove(function(event) {
 		offset = $("#album-img").offset();
 		pointer = calcPixel(event.pageX - offset.left, event.pageY - offset.top);
 		curclosest = $("#album-img").attr("src").substr(4, ($("#album-img").attr("src").length - 8));
-		closest = {dist: 2, img: 'acidrap.jpg'};
+		closest = {dist: 2, img: 'straightouttacompton.jpg'};
 		if (Math.abs(pointer.x) < 0.2 && Math.abs(pointer.y) < 0.2) {
-			$("#album-img").attr("src", "img/straightouttacompton.jpg");
+			closest = {name: "straightouttacompton", text: "N.W.A - Straight Outta Compton"};
 		}
 		else {
 			albums.forEach(function(i) {
@@ -34,14 +50,15 @@ $(document).ready(function() {
 					closest = {dist: distance, name: i.name, text: i.artist + " - " + i.album};
 				}
 			});
-			if (closest.name != curclosest) {
+		}
+		if (closest.name != curclosest) {
+			$("#album-img").attr("src", "img/" + closest.name + ".jpg");
+			$("#album-text").text(closest.text);
+			if (!mute) {
 				$("#album-snippet")[0].pause();
-				$("#album-img").attr("src", "img/" + closest.name + ".jpg");
-				$("#album-info").text(closest.text);
 				$("#album-snippet").attr("src", "music/" + closest.name + ".m4a");
 				$("#album-snippet")[0].play().catch(errorHandler);
 			}
-
 		}
 	});
 });
