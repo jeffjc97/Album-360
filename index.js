@@ -21,11 +21,10 @@ var albums = [
 var mute = false;
 
 $(document).ready(function() {
-	$('.close').click(function() {
-		console.log("??")
+	$('#infoModal').modal('show');
+	$('#infoModal').on('hidden.bs.modal', function () {
 		init();
 	});
-	$('#infoModal').modal('show');
 });
 
 function init() {
@@ -97,6 +96,6 @@ function distToSegmentSquared(p, v, w) {
   var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
   t = Math.max(0, Math.min(1, t));
   return dist2(p, { x: v.x + t * (w.x - v.x),
-                    y: v.y + t * (w.y - v.y) });
+					y: v.y + t * (w.y - v.y) });
 }
 function distToSegment(p, v, w) { return Math.sqrt(distToSegmentSquared(p, v, w)); }
